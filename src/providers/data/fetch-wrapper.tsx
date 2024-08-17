@@ -13,14 +13,14 @@ type Error = {
 // quando temos essa estrutura -> url:string , estamos dizendo o tipo que o parametro vai receber na função, 
 // se dentro da url colocarmos um numero, o codigo nem roda e ja aparece erro
 const customFetch = async (url: string, options: RequestInit) => {
-    const acessToken = localStorage.getItem('access_Token')
+    const accessToken = localStorage.getItem('access_Token')
     const headers = options.headers as Record<string, string>
     // caso queira comparar com os outros projetos, veja la no axios do safra ou will, é bem semelhante
     return await fetch(url, {
         ...options,
             headers: {
                 ...headers, 
-                Authorization: headers?.Authorization || `Bearer ${acessToken}`,
+                Authorization: headers?.Authorization || `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
                 "Apollo-Require-Preflight": "true"
             }
